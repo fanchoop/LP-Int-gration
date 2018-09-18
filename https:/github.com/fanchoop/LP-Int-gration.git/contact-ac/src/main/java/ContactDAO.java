@@ -1,39 +1,50 @@
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class ContactDAO implements IContactDAO {
 
-	private ArrayList<Contact> contacts = new ArrayList<Contact>();
-	
-	/* (non-Javadoc)
-	 * @see IContactDAO#readAll()
+	private List<Contact> contacts;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see annuaire.IContact#readAll()
 	 */
 	@Override
-	public ArrayList<Contact> readAll(){
+	public List<Contact> readAll() {
 		return contacts;
 	}
-	
-	/* (non-Javadoc)
-	 * @see IContactDAO#findByName(java.lang.String)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see annuaire.IContact#findByName(java.lang.String)
 	 */
 	@Override
-	public Contact findByName(String nom) {
-		Contact rep=null;
+	public Contact findByName(String name) {
+		Contact cont = new Contact();
 		for (Contact contact : contacts) {
-			if (contact.getNom().equals(nom)) {
-				rep=contact;
+			if (contact.getNom().equals(name)) {
+				cont = contact;
 			}
 		}
-		return rep;
+
+		return cont;
 	}
-	
-	/* (non-Javadoc)
-	 * @see IContactDAO#add(Contact)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see annuaire.IContact#add(annuaire.Contact)
 	 */
 	@Override
 	public void add(Contact contact) {
-		if(!contacts.contains(contact)){
-			contacts.add(contact);
-		}
+		contacts.add(contact);
 	}
-	
+
+	@Override
+	public void sup(Contact contact) {
+		contacts.remove(contact);
+
+	}
 }

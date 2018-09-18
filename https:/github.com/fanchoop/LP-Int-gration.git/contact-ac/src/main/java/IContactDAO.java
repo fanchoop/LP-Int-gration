@@ -1,11 +1,13 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public interface IContactDAO {
 
-	ArrayList<Contact> readAll();
+	List<Contact> readAll();
 
-	Contact findByName(String nom);
+	Contact findByName(String name);
 
 	void add(Contact contact);
+
+	void sup(Contact contact);
 
 }

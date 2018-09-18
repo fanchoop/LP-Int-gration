@@ -1,16 +1,11 @@
+
 import org.junit.Test;
 
-class ContactDAOTest {
-	
-//	@Test
-//	void test() {
-//		fail("Not yet implemented");
-//	}
+public class ContactDAOTest {
 
-	IContactDAO cdao = new ContactDAO();
+	@Test // (expected = ContactExacption.class)
+	public void testAdd() {
 
-	@Test
-	public void testFindByName() {
-		
 	}
+
 }

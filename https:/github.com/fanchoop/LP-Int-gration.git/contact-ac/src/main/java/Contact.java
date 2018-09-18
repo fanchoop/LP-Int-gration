@@ -1,10 +1,10 @@
 
 public class Contact {
-	
+
 	private String nom;
-	
+
 	public Contact() {
-		//this.nom=nom;
+		// this.nom=nom;
 	}
 
 	public String getNom() {
@@ -14,6 +14,5 @@ public class Contact {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
-	
+
 }

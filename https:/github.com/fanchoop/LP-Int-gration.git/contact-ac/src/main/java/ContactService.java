@@ -1,29 +1,32 @@
-
 public class ContactService {
-	
-	private IContactDAO dao = new ContactDAO();
-	
-	public void add(String contactName) throws ContactDuplicateException {
-		if(!contactName.equals(null) && contactName.length()>2 && contactName.length()<39) {
-			if(dao.findByName(contactName) != null) {
+	private IContactDAO dao;
+
+	public void ajouterContact() {
+
+	}
+
+	public void add(String nom) throws ContactDuplicateException {
+
+		if (!nom.equals("") && nom.length() > 2 && nom.length() < 39) {
+			if (dao.findByName(nom) != null) {
 				throw new ContactDuplicateException("Contact already exists");
 			}
-			Contact c= new Contact();
-			c.setNom(contactName);
-			dao.add(c);
-		}
-		else {
-			System.out.println("Format impossible");
-		}
-	}
-	
 
-	public void del(String name)  throws ContactNotFound{
-	if(name==null) {
-		throw new IllegalArgumentException("Name can't be null");
+			Contact cont = new Contact();
+			cont.setNom(nom);
+			dao.add(cont);
+		} else {
+			System.out.println("Le nom du contact ne remplis pas les conditions");
+		}
 	}
-	dao.findByName(name);//
-	//.orElseThrows(() ->
-	//new ContactNotFound("contact "+ name +""));
+
+	public void sup(String nom) throws ContactNotExistException {
+		if (dao.findByName(nom) == null) {
+			throw new ContactNotExistException("Contact doesn't exist");
+		}
+
+		Contact cont = new Contact();
+		cont.setNom(nom);
+		dao.sup(cont);
 	}
 }
